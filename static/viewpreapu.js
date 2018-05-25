@@ -1,7 +1,10 @@
 'use strict';
 (() => {
   const defaultRow = {};
-  const validations = {};
+  const validations = {
+    'preAPU_cost': { required: true },
+    'preAPU_duration': { required: true }
+  };
   const fields = [
     {
       key: 'id',
@@ -18,7 +21,7 @@
     }, {
       key: 'unit',
       readonly: true
-    }, 'preAPU_cost', {
+    }, 'preAPU_cost', 'preAPU_duration', {
       key: 'calculated',
       call: selection => {
         selection.text(d => {
@@ -27,7 +30,7 @@
       }
     }
   ];
-  const header = ['', 'Descripcion', 'Cant', '_Cant', 'Unidad', 'Costo', 'Parcial'];
+  const header = ['', 'Descripcion', 'Cant', '_Cant', 'Unidad', 'Costo', 'Duracion', 'Parcial'];
   const actions = [];
 
   window.viewpreapu = setupTable({
