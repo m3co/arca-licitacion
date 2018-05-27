@@ -5,7 +5,8 @@
   var Ready = Symbol();
   var root = {
     id: '2', parent: null,
-    description: '', expand: true
+    description: '', expand: true,
+    ContractorId: 2
   };
   root[Children] = [];
   root[Ready] = false;
