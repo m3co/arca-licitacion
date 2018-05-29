@@ -6,7 +6,7 @@
   var root = {
     id: '2', parent: null,
     description: '', expand: true,
-    ContractorId: 2
+    ContractorId: document.querySelector('select#ContractorId').value
   };
   root[Children] = [];
   root[Ready] = false;

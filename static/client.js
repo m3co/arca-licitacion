@@ -16,7 +16,7 @@
       query: 'select',
       module: 'fnpreAPUAAU',
       ProjectId: 2,
-      ContractorId: 2
+      ContractorId: document.querySelector('select#ContractorId').value
     });
 
     client.emit('data', {
