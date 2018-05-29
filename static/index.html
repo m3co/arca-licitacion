@@ -20,11 +20,14 @@
     </select>
     <script>
 'use strict';
-document.querySelector('select#ContractorId').value = window.location.search.match(/\?ContractorId=(\d+)$/)[1];
+(() => {
+var ContractorId = window.location.search.match(/\?ContractorId=(\d+)$/);
+document.querySelector('select#ContractorId').value = ContractorId ? ContractorId[1] : 1;
 
 document.querySelector('select#ContractorId').addEventListener('change', e => {
   window.location.search = `ContractorId=${e.target.value}`;
 });
+})();
     </script>
     <script src="client.js"></script>
     <div style="display: table; width:100%;">
