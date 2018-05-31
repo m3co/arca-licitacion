@@ -24,7 +24,7 @@
   function requestpreAPU(d, i, m) {
     viewpreapu.clear();
     client.emit('data', {
-      module: 'viewpreAPU',
+      module: 'fnpreAPU',
       query: 'select',
       ContractorId: d.ContractorId,
       id: d.id

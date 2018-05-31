@@ -34,10 +34,10 @@
   const actions = [];
 
   window.viewpreapu = setupTable({
-    module: 'viewpreAPU',
+    module: 'fnpreAPU',
     header: header, actions: actions,
     fields: fields, idkey: 'id', validations: validations,
-    defaultRow: defaultRow, filter: { key: 'table', value: 'viewpreAPU' },
+    defaultRow: defaultRow, filter: { key: 'table', value: 'fnpreAPU' },
     preventNewEntry: true
   });
 })();

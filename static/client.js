@@ -26,7 +26,7 @@
 
     client.emit('data', {
       query: 'subscribe',
-      module: 'viewpreAPU'
+      module: 'fnpreAPU'
     });
   });
 
@@ -48,11 +48,11 @@
         } else {
           console.log('sin procesar fnpreAPUAAU', data);
         }
-      } else if (data.module == 'viewpreAPU') {
+      } else if (data.module == 'fnpreAPU') {
         action = viewpreapu[`do${query}`];
         if (action) { action(row); }
         else {
-          console.log('sin procesar viewpreAPU', data);
+          console.log('sin procesar fnpreAPU', data);
         }
       } else {
         console.log('sin procesar row', data);
