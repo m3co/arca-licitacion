@@ -2,8 +2,9 @@
 (() => {
   const defaultRow = {};
   const validations = {
-    'preAPU_cost': { required: true },
-    'preAPU_duration': { required: true }
+    ContractorId: { required: true },
+    preAPU_cost: { required: true },
+    preAPU_duration: { required: true }
   };
   const fields = [
     {
