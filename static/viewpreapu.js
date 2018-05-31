@@ -39,6 +39,6 @@
     header: header, actions: actions,
     fields: fields, idkey: 'id', validations: validations,
     defaultRow: defaultRow, filter: { key: 'table', value: 'fnpreAPU' },
-    preventNewEntry: true
+    preventNewEntry: true, insertInsteadOfUpdate: true
   });
 })();
