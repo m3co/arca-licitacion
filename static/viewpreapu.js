@@ -22,7 +22,13 @@
     }, {
       key: 'unit',
       readonly: true
-    }, 'preAPU_cost', 'preAPU_duration', {
+    }, {
+      name: 'preAPU_cost',
+      type: 'number'
+    }, {
+      name: 'preAPU_duration',
+      type: 'number'
+    }, {
       key: 'calculated',
       call: selection => {
         selection.text(d => {
@@ -31,8 +37,21 @@
       }
     }
   ];
-  const header = ['', 'Descripcion', 'Cant', '_Cant', 'Unidad', 'Costo', 'Duracion', 'Parcial'];
-  const actions = [];
+  const header = ['', 'Descripcion', 'Cant', '_Cant', 'Unidad', 'Costo', 'Duracion', 'Parcial', '-'];
+  const actions = [{
+    select: 'button.delete',
+    setup: (selection => selection
+      .text('-')
+      .classed('delete', true)
+      .on('click', d => {
+        client.emit('data', {
+          query: 'delete',
+          module: 'fnpreAPU',
+          id: d.id,
+          idkey: 'id'
+        });
+      })
+  )}];
 
   window.viewpreapu = setupTable({
     module: 'fnpreAPU',
