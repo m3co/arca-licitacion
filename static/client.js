@@ -11,12 +11,12 @@
 
   client.on('connect', () => {
     console.log('connection');
-
+    var ContractorId = location.search.match(/\d+$/);
     client.emit('data', {
       query: 'select',
       module: 'fnpreAPUAAU',
       ProjectId: 2,
-      ContractorId: location.search.match(/\d+$/).toString()
+      ContractorId: ContractorId ? ContractorId.toString() : 1
     });
 
     client.emit('data', {
