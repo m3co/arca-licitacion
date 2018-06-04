@@ -15,8 +15,6 @@
   </head>
   <body>
     <select id="ContractorId">
-      <option>1</option>
-      <option>2</option>
     </select>
     <script>
 'use strict';
@@ -27,6 +25,38 @@ document.querySelector('select#ContractorId').value = ContractorId ? ContractorI
 document.querySelector('select#ContractorId').addEventListener('change', e => {
   window.location.search = `ContractorId=${e.target.value}`;
 });
+
+var contractors = [];
+var lastSTO;
+function doselect(row) {
+  var found = contractors.find(d => d.id == row.id);
+  if (!found) {
+    contractors.push(row);
+  }
+  if (lastSTO) {
+    clearTimeout(lastSTO);
+  }
+
+  lastSTO = setTimeout(() => {
+    render();
+  });
+}
+
+function render() {
+  d3.select('#ContractorId')
+    .selectAll('option')
+    .data(contractors)
+    .enter()
+    .append('option').attr('value', d => d.id).attr('label', d => d.fullname);
+
+  d3.select(`#ContractorId option[value="${
+    location.search.match(/\d+$/).toString()}"]`).attr('selected', '');
+}
+
+window.contractor = {
+  doselect: doselect
+};
+
 })();
     </script>
     <script src="client.js"></script>

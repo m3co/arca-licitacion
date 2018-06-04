@@ -16,7 +16,12 @@
       query: 'select',
       module: 'fnpreAPUAAU',
       ProjectId: 2,
-      ContractorId: document.querySelector('select#ContractorId').value
+      ContractorId: location.search.match(/\d+$/).toString()
+    });
+
+    client.emit('data', {
+      query: 'select',
+      module: 'Contractors'
     });
 
     client.emit('data', {
@@ -48,6 +53,8 @@
         } else {
           console.log('sin procesar fnpreAPUAAU', data);
         }
+      } else if (data.module == 'Contractors') {
+        contractor.doselect(row);
       } else if (data.module == 'fnpreAPU') {
         action = viewpreapu[`do${query}`];
         if (action) { action(row); }
