@@ -84,34 +84,6 @@
     }, 300);
   }
 
-  function setupConcretize(d) {
-    if (!d.parent) return;
-    d3.select(this).append('div').classed('concretize', true)
-      .append('button')
-      .attr('id', d => `btn-${d.id}`)
-      .attr('hidden', d => d.expand ? '' : null)
-      .text(d => d.preAPUId == null ? 'o' : 'x')
-      .on('click', (d) => {
-        var req;
-        if (d.id == null) {
-          req = {
-            query: 'concretize',
-            module: 'fnConcretizeAAU',
-            keynote: d.id_general,
-            project: d.id.split('.')[0]
-          };
-        } else {
-          req = {
-            query: 'deconcretize',
-            module: 'fnConcretizeAAU',
-            keynote: d.id,
-            project: d.id.split('.')[0]
-          };
-        }
-        client.emit('data', req);
-      });
-  }
-
   function render(base, tree) {
     if (!(tree[Children] instanceof Array)) {
       return;
@@ -137,8 +109,6 @@
       });
     tr.append('ol').attr('root', d => d.id);
 
-    tr.each(setupConcretize);
-
     var tr = base.selectAll('li.file')
       .data(tree[Children].filter(d => !d.expand))
       .enter().append('li').attr('class', 'file');
@@ -152,8 +122,6 @@
         d.status == 'empty' ? 'gray' : (d.status == 'full' ? 'black' : 'blue')
       )
       .on('click', requestpreAPU);
-
-    tr.each(setupConcretize);
 
     for (var i = 0; i < tree[Children].length; i++) {
       if (tree[Children][i].expand) {
