@@ -5,8 +5,7 @@
   var Ready = Symbol();
   var root = {
     id: '2', parent: null,
-    description: '', expand: true,
-    ContractorId: document.querySelector('select#ContractorId').value
+    description: '', expand: true
   };
   root[Children] = [];
   root[Ready] = false;
@@ -26,7 +25,7 @@
     client.emit('data', {
       module: 'fnpreAPU',
       query: 'select',
-      ContractorId: d.ContractorId,
+      ContractorId: document.querySelector('select#ContractorId').value,
       id: d.id
     });
   }
